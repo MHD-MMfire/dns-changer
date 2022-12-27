@@ -57,5 +57,5 @@ echo,
 pause
 ) else (
 rem run dns.bat as admin
-powershell -command "Start-Process %~nx0 -Verb runas -ArgumentList %op%" >nul
+powershell -command "Start-Process '%~nx0' -Verb runas -ArgumentList %op%" >nul
 )
