@@ -11,6 +11,8 @@ echo 2: set shecan.ir (178.22.122.100 - 185.51.200.2)
 echo 3: set electro (78.157.42.100 - 78.157.42.101)
 echo 4: set google (8.8.8.8 - 8.8.4.4)
 echo 5: set cloudflare (1.1.1.1 - 1.0.0.1)
+echo 6: set radar (10.202.10.10 - 10.202.10.11)
+echo 6: set mobinnet (185.55.226.26 - 185.55.225.25)
 echo,
 
 if [%1]==[] (
@@ -41,6 +43,14 @@ netsh int ip add dns name="%interface%" addr=8.8.4.4 index=2 validate=no >nul
 netsh int ip set dns "%interface%" source=dhcp validate=no >nul
 netsh int ip add dns name="%interface%" addr=1.1.1.1 index=1 validate=no >nul
 netsh int ip add dns name="%interface%" addr=1.0.0.1 index=2 validate=no >nul
+) else if %op%==6 (
+netsh int ip set dns "%interface%" source=dhcp validate=no >nul
+netsh int ip add dns name="%interface%" addr=10.202.10.10 index=1 validate=no >nul
+netsh int ip add dns name="%interface%" addr=10.202.10.11 index=2 validate=no >nul
+) else if %op%==7 (
+netsh int ip set dns "%interface%" source=dhcp validate=no >nul
+netsh int ip add dns name="%interface%" addr=185.55.226.26 index=1 validate=no >nul
+netsh int ip add dns name="%interface%" addr=185.55.225.25 index=2 validate=no >nul
 ) else (
 echo Wrong Input! Exiting...
 pause
